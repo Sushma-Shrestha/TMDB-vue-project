@@ -38,8 +38,9 @@ export const likeMixins = {
         },
 
         handleUnlike(id) {
+            console.log(id);
             const liked = JSON.parse(localStorage.getItem("liked")) || [];
-            const index = liked.findIndex((item) => item.id === id);
+            const index = liked.findIndex((item) => item.id == id);
             liked.splice(index, 1);
             localStorage.setItem("liked", JSON.stringify(liked));
             this.getLiked();
@@ -80,7 +81,9 @@ export const searchMixins = {
                 status: response.data.status ?? "",
                 cast: credits.data.cast ?? [],
                 crew: credits.data.crew ?? [],
-                image: response.data.poster_path ?? ""
+                image: response.data.poster_path ?? "",
+                number_of_seasons: response.data.number_of_seasons ?? 0,
+                number_of_episodes: response.data.number_of_episodes ?? 0,
             };
             console.log(this.data);
         }

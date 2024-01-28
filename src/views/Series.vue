@@ -1,18 +1,7 @@
 <template>
   <div class="grid-container">
     <div class="grid-item" v-for="item in data" :key="item.id" @click="handleClick(item.id, 'series')">
-      <img :src="item.image" alt="image" />
-      <div class="flex">
-        <h3 class="align-left">{{ item.title }}</h3>
-        <button class="dislike-btn" @click.stop="handleUnlike(item.id)" v-if="liked.some((likedmovie) => likedmovie.id === item.id)">
-          Unlike
-        </button>
-
-        <button class="like-btn" @click.stop="handleLike(item.id, item.title, item.description, item.image, 'series')"  v-else>
-          Like
-        </button>
-      </div>
-      <p class="align-left">{{ item.description.substring(0, 100) + "..." }}</p>
+      <GridItem :item="item" :liked="liked" @handleLike="handleLike" @handleUnlike="handleUnlike" :type="'series'" />
     </div>
   </div>
   <!-- pagination -->
@@ -25,9 +14,11 @@
 
 <script>
 import { imageChecker, emptyStringChecker, likeMixins } from "@/mixins";
+import GridItem from '../components/GridItem.vue';
 import Axios from "axios";
 export default {
 name: "Series",
+components: { GridItem },
 mixins: [imageChecker, emptyStringChecker, likeMixins],
 data() {
   return {

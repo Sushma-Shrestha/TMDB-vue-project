@@ -1,11 +1,11 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
-import Movies from './components/Movies.vue'
-import Series from './components/Series.vue'
-import NotFound from './components/NotFound.vue'
+import Movies from './views/Movies.vue'
+import Series from './views/Series.vue'
+import NotFound from './views/NotFound.vue'
 import Sidebar from './components/Sidebar.vue'
-import Details from './components/Details.vue'
-import Liked from './components/Liked.vue'
+import Details from './views/Details.vue'
+import Liked from './views/Liked.vue'
 
 const routes = {
   '/': Movies,
@@ -45,7 +45,7 @@ const currentView = computed(() => {
 </script>
 
 <template>
-  <sidebar :currentView="currentView" :routes="menus">
+  <sidebar :currentView="currentView" :routes="menus" v-cloak>
     <template v-slot:default>
       <component :is="currentView" />
     </template>

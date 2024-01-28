@@ -3,6 +3,7 @@
         <!-- <a href="#/" class="link">Movies</a>
         <a href="#/about" class="link">Series</a>
         <a href="#/non-existent-path" class="link">Liked</a> -->
+        <a href="#/" class="link"><img src="@/assets/tmdb.svg" alt="logo" class="logo" height="100" width="100" /></a>
         <a v-for="(component, path) in routes" :key="path" :href="`#${path}`" :class="{ 'active': currentView === component }" class="link">
         {{ capitalizeFirstLetter(path.slice(1)) }}
         </a>

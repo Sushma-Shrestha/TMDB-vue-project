@@ -6,15 +6,17 @@
         <div class="detail-content">
             <h2 class="mb-2">{{ data.title }}</h2>
             <div class="flex">
-            <div>
-                <p>Release date: {{ data.release_date }}</p>
-                <p class="mb-2">Vote: {{ data.vote_average }} / {{ data.vote_count }}</p>
-            </div>
-                <button class="dislike-btn" @click.stop="handleUnlike(id)" v-if="liked.some((likedmovie) => likedmovie.id == id)">
+                <div>
+                    <p>Release date: {{ data.release_date }}</p>
+                    <p class="mb-2">Vote: {{ data.vote_average }} / {{ data.vote_count }}</p>
+                    <p class="mb-2" v-if="data.number_of_seasons">No. of seasons: {{ data.number_of_seasons }}</p>
+                    <p class="mb-2" v-if="data.number_of_episodes">No. of Episodes: {{ data.number_of_episodes }}</p>
+                </div>
+                <button class="dislike-btn p-2" @click.stop="handleUnlike(id)" v-if="liked.some((likedmovie) => likedmovie.id == id)">
                 Unlike
                 </button>
 
-                <button class="like-btn" @click.stop="handleLike(id, data.title, data.overview, imageChecker(data.poster_path), type)"  v-else>
+                <button class="like-btn p-2" @click.stop="handleLike(id, data.title, data.overview, imageChecker(data.poster_path), type)"  v-else>
                 Like
                 </button>
             </div>

@@ -1,28 +1,21 @@
 <template>
     <h1>Liked Page</h1>
-    <div class="grid-container">
+    <div class="grid-container" v-if="liked.length > 0">
       <div class="grid-item" v-for="item in liked" :key="item.id" @click="handleClick(item.id, item.type)">
-        <img :src="item.image" alt="image" />
-        <!-- flex for like and title -->
-        <div class="flex">
-          <h3 class="align-left">{{ item.title }}</h3>
-          <button class="dislike-btn" @click.stop="handleUnlike(item.id)" v-if="liked.some((likedmovie) => likedmovie.id === item.id)">
-            Unlike
-          </button>
-
-          <button class="like-btn" @click.stop="handleLike(item.id, item.title, item.description, item.image, item.type)"  v-else>
-            Like
-          </button>
-        </div>
-        <p class="align-left">{{ item.description.substring(0, 100) + "..." }}</p>
+        <GridItem :item="item" :liked="liked" @handleLike="handleLike" @handleUnlike="handleUnlike" :type="item.type" />
       </div>
+    </div>
+    <div v-else class="nodata-flex">
+      <h2 class="text-center">You haven't liked anything yet</h2>
     </div>
 </template>
 
 <script>
 import { imageChecker, emptyStringChecker, likeMixins } from "@/mixins";
+import GridItem from '../components/GridItem.vue';
 export default {
     name: "Liked",
+    components: { GridItem },
     mixins: [imageChecker, emptyStringChecker, likeMixins],
     data() {
         return {
