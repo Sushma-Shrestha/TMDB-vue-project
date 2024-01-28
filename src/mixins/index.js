@@ -61,8 +61,26 @@ export const searchMixins = {
                     "https://api.themoviedb.org/3/" + api + "/" + id + "?api_key=" +
                     import.meta.env.VITE_APP_API_KEY
                 );
-            console.log(response.data);
-            this.data = response.data;
+            const credits =
+                await Axios.get(
+                    "https://api.themoviedb.org/3/" + api + "/" + id + "/credits?api_key=" +
+                    import.meta.env.VITE_APP_API_KEY
+                );
+            this.data = {
+                genres: response.data.genres ?? [],
+                production_companies: response.data.production_companies ?? [],
+                production_countries: response.data.production_countries ?? [],
+                popularity: response.data.popularity ?? 0,
+                overview: response.data.overview ?? "",
+                poster_path: response.data.poster_path ?? "",
+                release_date: response.data.release_date ?? "",
+                title: response.data.title ?? "",
+                vote_average: response.data.vote_average ?? 0,
+                vote_count: response.data.vote_count ?? 0,
+                status: response.data.status ?? "",
+                cast: credits.data.cast ?? [],
+                crew: credits.data.crew ?? [],
+            };
         }
     }
 };

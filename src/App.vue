@@ -8,6 +8,7 @@ import Details from './components/Details.vue'
 import Liked from './components/Liked.vue'
 
 const routes = {
+  '/': Movies,
   '/movies': Movies,
   '/series': Series,
   '/details': Details,
@@ -30,6 +31,9 @@ window.addEventListener('hashchange', () => {
 const props = ref({})
 
 const currentView = computed(() => {
+  if (currentPath.value === '') {
+    return Movies
+  }
   props.value = currentPath.value.includes('?') ? Object.fromEntries(new URLSearchParams(currentPath.value.slice(1).split('?')[1])) : {};
   const path = currentPath.value.slice(1).split('?')[0]
   const component = routes[path] || NotFound

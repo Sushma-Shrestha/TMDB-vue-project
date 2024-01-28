@@ -1,6 +1,20 @@
 <template>
-    <h1>Details Page</h1>
-    
+    <div class="flex-center">
+        <div class="poster-image">
+            <img :src="imageChecker(data.poster_path)" alt="poster" class="detail-image" />
+        </div>
+        <div class="detail-content">
+            <h2 class="mb-2">{{ data.title }}</h2>
+            <div>
+                <p>Release date: {{ data.release_date }}</p>
+                <p class="mb-2">Vote: {{ data.vote_average }} / {{ data.vote_count }}</p>
+            </div>
+            <div class="genre">
+
+            </div>
+            <div>{{ data.overview }}</div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -13,17 +27,17 @@ export default {
             id: null,
             type: null,
             liked: [],
-            data: {},
+            data: {}
         };
     },
 
     async mounted() {
         const query = Object.fromEntries(new URLSearchParams(window.location.hash.split('?')[1]));
-        console.log(query);
         this.id = query.id;
         this.type = query.type;
         this.getLiked();
         this.getDetails(this.id, this.type);
+        console.log(this.data);
     },
 };
 

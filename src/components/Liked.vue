@@ -21,7 +21,6 @@
 
 <script>
 import { imageChecker, emptyStringChecker, likeMixins } from "@/mixins";
-import Axios from "axios";
 export default {
     name: "Liked",
     mixins: [imageChecker, emptyStringChecker, likeMixins],

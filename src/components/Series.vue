@@ -2,7 +2,6 @@
   <div class="grid-container">
     <div class="grid-item" v-for="item in data" :key="item.id" @click="handleClick(item.id, 'series')">
       <img :src="item.image" alt="image" />
-      <!-- flex for like and title -->
       <div class="flex">
         <h3 class="align-left">{{ item.title }}</h3>
         <button class="like-btn" @click.stop="handleUnlike(item.id)" v-if="liked.some((likedmovie) => likedmovie.id === item.id)">
@@ -28,7 +27,7 @@
 import { imageChecker, emptyStringChecker, likeMixins } from "@/mixins";
 import Axios from "axios";
 export default {
-name: "Movies",
+name: "Series",
 mixins: [imageChecker, emptyStringChecker, likeMixins],
 data() {
   return {
