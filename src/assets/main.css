@@ -228,3 +228,49 @@ div.content {
   cursor: pointer;
   border-radius: 5px;
 }
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.genre {
+  background-color: #605f5f;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cast-flex {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap;
+  margin: 20px 0;
+
+}
+
+.cast-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.casts {
+  margin: 0 10px;
+  width: 120px;
+}
+
+.mt-5{
+  margin-top: 5rem;
+}
+
+.text-center {
+  text-align: center;
+}

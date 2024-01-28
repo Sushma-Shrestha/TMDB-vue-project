@@ -10,7 +10,6 @@
                 <p>Release date: {{ data.release_date }}</p>
                 <p class="mb-2">Vote: {{ data.vote_average }} / {{ data.vote_count }}</p>
             </div>
-            
                 <button class="dislike-btn" @click.stop="handleUnlike(id)" v-if="liked.some((likedmovie) => likedmovie.id == id)">
                 Unlike
                 </button>
@@ -19,7 +18,27 @@
                 Like
                 </button>
             </div>
+            <div class="flex-start">
+                Genres: 
+                <span v-for="genre in data.genres" :key="genre.id" class="genre">
+                    {{ genre.name }}
+                </span>
+            </div>
             <div>{{ data.overview }}</div>
+        </div>
+    </div>
+    <h2 class="mt-2 mb-2">Casts / Actors:</h2>
+    <div class="cast-flex">
+        <div v-for="casts in data.cast" :key="casts.id" class="casts">
+            <img :src="imageChecker(casts.profile_path)" alt="poster" class="cast-image" width="100" height="100" />
+            <p class="text-center">{{ casts.name }}</p>
+        </div>
+    </div>
+    <h2 class="mt-5 mb-2">Crew Members:</h2>
+    <div class="cast-flex">
+        <div v-for="casts in data.crew" :key="casts.id" class="casts">
+            <img :src="imageChecker(casts.profile_path)" alt="poster" class="cast-image" width="100" height="100" />
+            <p class="text-center">{{ casts.name }}</p>
         </div>
     </div>
 </template>
