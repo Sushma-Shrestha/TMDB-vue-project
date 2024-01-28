@@ -4,7 +4,7 @@
       <img :src="item.image" alt="image" />
       <div class="flex">
         <h3 class="align-left">{{ item.title }}</h3>
-        <button class="like-btn" @click.stop="handleUnlike(item.id)" v-if="liked.some((likedmovie) => likedmovie.id === item.id)">
+        <button class="dislike-btn" @click.stop="handleUnlike(item.id)" v-if="liked.some((likedmovie) => likedmovie.id === item.id)">
           Unlike
         </button>
 

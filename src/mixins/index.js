@@ -55,7 +55,7 @@ export const likeMixins = {
 export const searchMixins = {
     methods: {
         async getDetails(id, type) {
-            const api = type === "movies" ? "movie" : "tv";
+            const api = type == "movies" ? "movie" : "tv";
             const response =
                 await Axios.get(
                     "https://api.themoviedb.org/3/" + api + "/" + id + "?api_key=" +
@@ -74,13 +74,13 @@ export const searchMixins = {
                 overview: response.data.overview ?? "",
                 poster_path: response.data.poster_path ?? "",
                 release_date: response.data.release_date ?? "",
-                title: response.data.title ?? "",
+                title: api === "movie" ? response.data.title : response.data.name,
                 vote_average: response.data.vote_average ?? 0,
                 vote_count: response.data.vote_count ?? 0,
                 status: response.data.status ?? "",
                 cast: credits.data.cast ?? [],
                 crew: credits.data.crew ?? [],
-                image: response.data.poster_path ?? "",
+                image: response.data.poster_path ?? ""
             };
             console.log(this.data);
         }

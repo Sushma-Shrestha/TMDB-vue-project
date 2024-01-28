@@ -5,12 +5,13 @@
         </div>
         <div class="detail-content">
             <h2 class="mb-2">{{ data.title }}</h2>
+            <div class="flex">
             <div>
                 <p>Release date: {{ data.release_date }}</p>
                 <p class="mb-2">Vote: {{ data.vote_average }} / {{ data.vote_count }}</p>
             </div>
-            <div class="flex">
-                <button class="like-btn" @click.stop="handleUnlike(id)" v-if="liked.some((likedmovie) => likedmovie.id == id)">
+            
+                <button class="dislike-btn" @click.stop="handleUnlike(id)" v-if="liked.some((likedmovie) => likedmovie.id == id)">
                 Unlike
                 </button>
 
