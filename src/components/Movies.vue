@@ -34,7 +34,7 @@ export default {
     return {
       data: [],
       totalPage: 0,
-      currentPage: 1,
+      currentPage: Object.fromEntries(new URLSearchParams(window.location.hash.split('?')[1])).page ?? 1,
       liked: [],
     };
   },
@@ -60,6 +60,7 @@ export default {
       }));
       window.scrollTo(0, 0);
       this.totalPage = response.data.total_pages;
+      window.location.hash = `/movies?page=${this.currentPage}`;
       this.currentPage = response.data.page;
     },
   },

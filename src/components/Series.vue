@@ -33,11 +33,13 @@ data() {
   return {
     data: [],
     totalPage: 0,
-    currentPage: 1,
+    currentPage: Object.fromEntries(new URLSearchParams(window.location.hash.split('?')[1])).page ?? 1,
     liked: [],
   };
 },
 async mounted() {
+  // const query = Object.fromEntries(new URLSearchParams(window.location.hash.split('?')[1]));
+  // this.currentPage = query.page;
   this.handlePageChange(this.currentPage);
   this.getLiked();
 },
@@ -53,12 +55,13 @@ methods: {
     );
     this.data = response.data.results.map((item) => ({
       id: item.id,
-      title: this.emptyStringChecker(item.title) ? item.title : item.name,
+      title: item.name ?? "No title",
       description: item.overview,
       image: this.imageChecker(item.poster_path),
     }));
     window.scrollTo(0, 0);
     this.totalPage = response.data.total_pages;
+    window.location.hash = `/series?page=${this.currentPage}`;
     this.currentPage = response.data.page;
   },
 },
