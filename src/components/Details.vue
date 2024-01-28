@@ -9,8 +9,14 @@
                 <p>Release date: {{ data.release_date }}</p>
                 <p class="mb-2">Vote: {{ data.vote_average }} / {{ data.vote_count }}</p>
             </div>
-            <div class="genre">
+            <div class="flex">
+                <button class="like-btn" @click.stop="handleUnlike(id)" v-if="liked.some((likedmovie) => likedmovie.id == id)">
+                Unlike
+                </button>
 
+                <button class="like-btn" @click.stop="handleLike(id, data.title, data.overview, imageChecker(data.poster_path), type)"  v-else>
+                Like
+                </button>
             </div>
             <div>{{ data.overview }}</div>
         </div>
@@ -40,5 +46,4 @@ export default {
         console.log(this.data);
     },
 };
-
 </script>

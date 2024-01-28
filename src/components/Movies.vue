@@ -56,7 +56,7 @@ export default {
         id: item.id,
         title: this.emptyStringChecker(item.title) ? item.title : item.name,
         description: item.overview,
-        image: this.imageChecker(item.poster_path),
+        image: this.imageChecker(item.poster_path) ?? "@/assets/no-image.png",
       }));
       window.scrollTo(0, 0);
       this.totalPage = response.data.total_pages;

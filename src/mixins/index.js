@@ -5,7 +5,7 @@ export const imageChecker = {
             if (image !== null) {
                 return "https://image.tmdb.org/t/p/original" + image;
             }
-            return require("@/assets/logo.png");
+            return "src/assets/no-image.jpg";
         }
     }
 };
@@ -80,7 +80,9 @@ export const searchMixins = {
                 status: response.data.status ?? "",
                 cast: credits.data.cast ?? [],
                 crew: credits.data.crew ?? [],
+                image: response.data.poster_path ?? "",
             };
+            console.log(this.data);
         }
     }
 };
