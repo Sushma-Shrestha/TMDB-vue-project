@@ -55,6 +55,7 @@ div.content {
   div.content {
     margin-left: 0;
   }
+
   .sidebar .logo {
     width: 50px;
     height: 50px;
@@ -279,6 +280,10 @@ div.content {
   text-align: center;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .nodata-flex {
   height: 50vh;
   display: flex;
@@ -306,6 +311,77 @@ div.content {
   display: none;
 }
 
-.p-2{
+.p-2 {
   padding: 10px 15px;
+}
+
+.responsive {
+  width: 95%;
+  height: auto;
+  overflow-x: scroll;
+}
+
+.table-image {
+  width: 80px;
+  height: auto;
+  object-fit: cover;
+  margin: 0 10px;
+}
+
+.liked-table {
+  background-color: #252525;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 1.5rem;
+}
+
+.liked-table tr {
+  background-color: #3d3d3d;
+  color: #ffffff;
+  padding: 5px !important;
+}
+
+.liked-table tr:hover {
+  background-color: #494d4d;
+  color: #fff;
+}
+
+.liked-table td {
+  padding: 10px 5px !important;
+}
+
+.table-btn {
+  padding: 5px 10px;
+}
+
+.title {
+  width: 25%;
+  font-weight: 600;
+  min-width: 100px;
+}
+
+.description {
+  width: 50%;
+  min-width: 200px;
+}
+
+.vertical-top {
+  vertical-align: top !important;
+}
+
+.tabs {
+  padding: 5px 10px;
+  border: none;
+  background-color: #605f5f;
+  color: #fff;
+}
+
+.tabs:hover {
+  background-color: #151515;
+}
+
+.tabs.active {
+  background-color: #000000;
 }

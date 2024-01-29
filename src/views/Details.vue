@@ -29,14 +29,14 @@
             <div>{{ data.overview }}</div>
         </div>
     </div>
-    <h2 class="mt-2 mb-2">Casts / Actors:</h2>
+    <h2 class="mt-2 mb-2" v-if="castlength">Casts / Actors:</h2>
     <div class="cast-flex">
         <div v-for="casts in data.cast" :key="casts.id" class="casts">
             <img :src="imageChecker(casts.profile_path)" alt="poster" class="cast-image" width="100" height="100" />
             <p class="text-center">{{ casts.name }}</p>
         </div>
     </div>
-    <h2 class="mt-5 mb-2">Crew Members:</h2>
+    <h2 class="mt-5 mb-2" v-if="crewlength">Crew Members:</h2>
     <div class="cast-flex">
         <div v-for="casts in data.crew" :key="casts.id" class="casts">
             <img :src="imageChecker(casts.profile_path)" alt="poster" class="cast-image" width="100" height="100" />
@@ -55,7 +55,9 @@ export default {
             id: null,
             type: null,
             liked: [],
-            data: {}
+            data: {},
+            crewlength: 0,
+            castlength: 0,
         };
     },
 
@@ -65,7 +67,18 @@ export default {
         this.type = query.type;
         this.getLiked();
         this.getDetails(this.id, this.type);
-        console.log(this.data);
+        this.crewlength = this.data.crew?.length;
+        this.castlength = this.data.cast?.length;
+    },
+
+    watch: {
+        data: {
+            handler() {
+                this.crewlength = this.data.crew?.length;
+                this.castlength = this.data.cast?.length;
+            },
+            deep: true,
+        },
     },
 };
 </script>
