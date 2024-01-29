@@ -1,7 +1,7 @@
 <template>
     <h1>Liked Page</h1>
     <!-- option for grid or table -->
-    <div class="option">
+    <div class="option" v-if="liked.length > 0">
       <button class="btn tabs" @click="isGrid = true" :class="isGrid?'active':''">Grid View</button>
       <button class="btn tabs" @click="isGrid = false" :class="isGrid?'':'active'">Table View</button>
     </div>

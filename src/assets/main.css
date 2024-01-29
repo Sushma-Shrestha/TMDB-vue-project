@@ -151,6 +151,7 @@ div.content {
   /* margin-left: 20px; */
   /* width: 70%; */
   text-align: justify;
+  min-width: 50%;
 }
 
 /* .heading {
