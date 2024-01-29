@@ -14,6 +14,14 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ```sh
 npm install
+
+cp .env.example .env
+```
+
+## Get API Key from TMDB
+```sh
+#Insert api key in .env
+VITE_APP_API_KEY="<YOUR_API_KEY>"
 ```
 
 ### Compile and Hot-Reload for Development
